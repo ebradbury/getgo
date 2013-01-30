@@ -1,0 +1,23 @@
+PROJECTS_DIR="$HOME/code/projects/"
+PROJECT_NAME=$1
+PROJECT_DIR="$PROJECTS_DIR$1"
+DJANGO_VERSION="1.4"
+
+if [ -d "$PROJECT_DIR" ]; then
+    echo "Project directory already exists"
+    return
+fi
+
+mkvirtualenv $PROJECT_NAME
+echo "cd $PROJECT_DIR" >> bin/postactivate
+
+pip install "Django>=1.4"
+
+django-admin.py startproject --template https://github.com/ebradbury/django-project-template/archive/d$DJANGO_VERSION.zip project
+
+mv project/ $PROJECT_DIR
+cd $PROJECT_DIR
+
+python manage.py syncdb
+
+echo "Project ready."
