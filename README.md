@@ -2,7 +2,7 @@
 
 getgo is a simple shell script that I use to setup Django development environments.
 
-It uses virtualenv and my [django-project-template](https://github.com/ebradbury/django-project-template).
+It uses virtualenv, pip, and my [django-project-template](https://github.com/ebradbury/django-project-template).
 
 ##Requirements
 
